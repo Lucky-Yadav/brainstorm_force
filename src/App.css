@@ -1,38 +1,146 @@
 .App {
-  text-align: center;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Poppins', sans-serif;
+}
+:root {
+  color:#5a28e5b2;
+  --color-bg: #1f1f38;
+  --color-bg-variant: #2c2c6c;
+  --color-primary: #4db5ff;
+  --color-primary-variant: #2c2c6c;
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+  --transition: all 400ms ease;
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+  scroll-behavior: smooth;
+}
+.header {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: sticky;
+  max-width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
   display: flex;
-  flex-direction: column;
+  max-width: 100%;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 0 4px 10px 0 rgb(0 0 0 / 10%);
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: transparent;
+  background: transparent;
+  padding-left: 20px;
 }
-
-.App-link {
-  color: #61dafb;
+.logo {
+  margin-left: 5%;
 }
+.search {
+  background: transparent;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  margin-right: 5%;
+  color: aqua;
+}
+.data {
+  height: 100vh;
+  background-image: url("./Images/SWOT_Homepage_Launch_Tile_DESKTOP_36ea0a3735.jpg");
+  background-size: 100% 100%;
+}
+.data {
+  width: 100%;
+}
+.top_data {
+  position: absolute;
+  color: #ffffff;
+  align-items: center;
+  top: 48%;
+  left: 16%;
+}
+.top_data p {
+  top: 30%;
+      font-size: 15px;
+      font-weight: 400;
+      margin: 10px;
+      margin-left: 0%;
+}
+.top_data h1 {
+  font-weight: 700;
+  font-size: 46px;
+    line-height: 1.2;
+}
+.search_box {
+  margin-top: 7%;
+  width: 147%;
+  display: flex;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  z-index: 8;
+}
+.search_box input{
+  border: none;
+  width: 500%;
+  /* background-color: transparent; */
+  resize: none;
+  outline: none;
+  
+}
+.mousehover {
+  box-shadow:  0.5px 0.5px 2px 2px #767676;
+  background-color: #ffffff;
+  color: grey;
+  padding: 4%;
+  border-radius: 6px;
+  width: 147%;
+  margin-top: 5px;
+  z-index: 8;
+  position: relative;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.trending_searches {
+  gap: 20px;  
+}
+.trending_searches p {
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+}
+.hidden {
+  display: none;
+}
+.data {
+  margin-top: -1px;
+}
+.grids {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.carda {
+  padding: 20px;
+}
+.capsule {
+  padding: 3%;
+  border: 1px solid #767676;
+  border-radius: 5px;
+  background-color: var(--color-bg);
+  color: var(--color-white);
+  line-height: 1.7;
+  background-image: url(../src/Images/bg-texture.png);
+}
+.jss1 {
+  display: flex;
+  justify-content: space-between;
 }
