@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { Loader } from "./Loader";
 
 const Grid = () => {
   const [capsules, setcapsules] = useState([""]);
