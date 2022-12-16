@@ -53,6 +53,7 @@ html {
   color: aqua;
 }
 .data {
+  margin-top: -60px;
   height: 100vh;
   background-image: url("./Images/SWOT_Homepage_Launch_Tile_DESKTOP_36ea0a3735.jpg");
   background-size: 100% 100%;
@@ -121,7 +122,7 @@ html {
 .hidden {
   display: none;
 }
-.data {
+.data1 {
   margin-top: -1px;
 }
 .grids {
@@ -130,6 +131,7 @@ html {
 }
 .carda {
   padding: 20px;
+  background-color: #bebecb
 }
 .capsule {
   padding: 3%;
@@ -140,7 +142,15 @@ html {
   line-height: 1.7;
   background-image: url(../src/Images/bg-texture.png);
 }
+h4 {
+  padding: 0%;
+  margin: 0%;
+}
 .jss1 {
+  display: flex;
+  justify-content: space-between;
+}
+.mission_data {
   display: flex;
   justify-content: space-between;
 }

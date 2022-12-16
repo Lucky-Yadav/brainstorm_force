@@ -5,19 +5,19 @@ import { Loader } from "./Loader";
 
 const Grid = () => {
   const [capsules, setcapsules] = useState([""]);
-  const [query, setquery] = React.useState("status");
+  const [query, setquery] = React.useState("upcoming");
   const [noresult, setnoresult] = useState(true);
   const [searchvalue, setsearchvalue] = useState("your request");
   const [ishovering, setishovering] = useState(-1);
   const [searchhovering, setsearchhovering] = useState(false);
 
   useEffect(() => {
-    // getdata();
+    getdata();
     // alert("shown")
-  }, [setquery]);
+  }, [query]);
 
   const getdata = () => {
-    axios.get(`https://api.spacexdata.com/v3/capsules?${query}=active`).then((res) => {
+    axios.get(`https://api.spacexdata.com/v3/capsules?${query}`).then((res) => {
       console.log(res.data);
       setnoresult(false);
       setcapsules(res.data);
@@ -26,7 +26,7 @@ const Grid = () => {
 
   const searchby = (value) => {
     setquery([value]);
-    getdata();
+    // getdata();
     console.log(value);
     setsearchvalue(value);
     handlesearchleave();
@@ -64,29 +64,29 @@ const Grid = () => {
           </div>
           <div>
             <div
-              className={` data   ${searchhovering ? "" : "hidden"}`}
+              className={` data1   ${searchhovering ? "" : "hidden"}`}
               onMouseLeave={handlesearchleave}
             >
               <div className="mousehover">
-                <p> Search by</p>
+                <p> Filter by</p>
                 <div className="trending_searches">
                   <p
                     onClick={() => {
-                      searchby("Status");
+                      searchby("status=active");
                     }}
                   >
                     Status
                   </p>
                   <p
                     onClick={() => {
-                      searchby("Original_launch");
+                      searchby("original_launch");
                     }}
                   >
                     Original_launch
                   </p>
                   <p
                     onClick={() => {
-                      searchby("type");
+                      searchby("type=Dragon 1.1");
                     }}
                   >
                     Type
@@ -102,55 +102,47 @@ const Grid = () => {
           <div className={`${noresult ? "" : " hidden"} `}>
             Results not found for "{searchvalue}"
           </div>
-          <InfiniteScroll
-            className="appa"
-            dataLength={capsules.length/5}
-            next={getdata}
-            hasMore={true}
-            loader={<Loader />}
-          >
-            <div className="capsule_box">
-              <div>
-                <div className="grids">
-                  {capsules?.map((capsule) => (
-                    <div className="carda" key={capsule.capsule_serial}>
-                      <div
-                        className="capsule_main_div"
-                        onMouseEnter={() =>
-                          setishovering(capsule.capsule_serial)
-                        }
-                        onMouseLeave={() => setishovering(-1)}
-                      >
-                        <div className="capsulehover">
-                          <div className="top4">
-                            <div className="kelbm">
-                              <div
-                                className={`ppjpj ${
-                                  ishovering == capsule.capsule_serial
-                                    ? "backgr"
-                                    : "hidden"
-                                } `}
-                              ></div>
-                            </div>
+
+          <div className="capsule_box">
+            <div>
+              <div className="grids">
+                {capsules?.map((capsule) => (
+                  <div className="carda" key={capsule.capsule_serial}>
+                    <div
+                      className="capsule_main_div"
+                      onMouseEnter={() => setishovering(capsule.capsule_serial)}
+                      onMouseLeave={() => setishovering(-1)}
+                    >
+                      <div className="capsulehover">
+                        <div className="top4">
+                          <div className="kelbm">
+                            <div
+                              className={`ppjpj ${
+                                ishovering === capsule.capsule_serial
+                                  ? "backgr"
+                                  : "hidden"
+                              } `}
+                            ></div>
                           </div>
                         </div>
-                        <div className="capsule">
-                          <div className="jss1">
-                            <div className="jss1a">
-                              <p>capsule_serial: {capsule.capsule_serial}</p>
-                              <p>capsule_id: {capsule.capsule_id}</p>
-                            </div>
-                            <div className="jss1b">
-                              <p>Status: {capsule.status}</p>
-                              <p>landings: {capsule.landings}</p>
-                            </div>
+                      </div>
+                      <div className="capsule">
+                        <div className="jss1">
+                          <div className="jss1a">
+                            <p>capsule_serial: {capsule.capsule_serial}</p>
+                            <p>capsule_id: {capsule.capsule_id}</p>
                           </div>
-                          <div className="jss2">
-                            <p>Details: {capsule.details}</p>
+                          <div className="jss1b">
+                            <p>Status: {capsule.status}</p>
+                            <p>landings: {capsule.landings}</p>
                           </div>
-                          <div className="missions">
-                            <h4>Missions</h4>
-                            {capsule.missions?.map((mission) => (
+                        </div>
+                        <div className="jss2">
+                          <p>Details: {capsule.details}</p>
+                        </div>
+                        <div className="missions">
+                          <h4>Missions</h4>
+                          {capsule.missions?.map((mission) => (
                             <div className="mission_data" key={mission.name}>
                               <div className="mission_name">
                                 Mission Name:{mission.name}
@@ -160,17 +152,16 @@ const Grid = () => {
                               </div>
                             </div>
                           ))}
-                          </div>
-                          
-                          <p>Type: {capsule.type}</p>
                         </div>
+
+                        <p>Type: {capsule.type}</p>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </InfiniteScroll>
+          </div>
         </div>
       </div>
     </div>
