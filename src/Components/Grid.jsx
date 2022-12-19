@@ -9,8 +9,6 @@ const Grid = () => {
   const [ishovering, setishovering] = useState(-1);
   const [searchhovering, setsearchhovering] = useState(false);
 
-  
-
   const getdata = () => {
     axios.get(`https://api.spacexdata.com/v3/capsules?${query}`).then((res) => {
       console.log(res.data);
